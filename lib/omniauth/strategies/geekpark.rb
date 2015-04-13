@@ -25,7 +25,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.user.as_json({only: [:id, :username, :realname, :email, :avatar, :company, :position, :mobile, :bio]})
+        @raw_info ||= access_token.get('/api/v1/user').parsed || {}
       end
     end
   end
