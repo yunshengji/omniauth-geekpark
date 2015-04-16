@@ -19,7 +19,7 @@ module OmniAuth
           'company' => raw_info['company'],
           'position' => raw_info['position'],
           'mobile' => raw_info['mobile'],
-          'avatar' => raw_info['avatar']['url'],
+          'avatar' => raw_info['avatar'],
           'bio' => raw_info['bio'],
         }
       end
