@@ -9,7 +9,7 @@ module OmniAuth
         token_url: 'http://www.geekpark.net/oauth2/token'
       }
 
-      uid { raw_info['id'].to_s }
+      uuid { raw_info['uuid'] }
 
       info do
         {
