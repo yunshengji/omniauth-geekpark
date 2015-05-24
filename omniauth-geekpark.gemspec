@@ -2,11 +2,11 @@
 require File.expand_path('../lib/omniauth-geekpark/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["HaoYunfei"]
+  gem.authors       = %w(HaoYunfei Gavin)
   gem.email         = ["cloudy9101@126.com"]
   gem.description   = %q{Official OmniAuth strategy for GeekPark.}
   gem.summary       = %q{Official OmniAuth strategy for GeekPark.}
-  gem.homepage      = "https://github.com/cloudy9101/omniauth-geekpark"
+  gem.homepage      = "https://github.com/GeekPark/omniauth-geekpark"
   gem.license       = "MIT"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
