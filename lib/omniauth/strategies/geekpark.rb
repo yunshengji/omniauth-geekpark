@@ -5,8 +5,8 @@ module OmniAuth
     class GeekPark < OmniAuth::Strategies::OAuth2
       option :client_options, {
         site: 'http://www.geekpark.net',
-        authorize_url: 'http://www.geekpark.net/oauth2/authorize',
-        token_url: 'http://www.geekpark.net/oauth2/token'
+        authorize_url: 'http://www.geekpark.net/oauth/authorize',
+        token_url: 'http://www.geekpark.net/oauth/token'
       }
 
       uuid { raw_info['uuid'] }
