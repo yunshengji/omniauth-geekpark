@@ -21,6 +21,7 @@ module OmniAuth
           'mobile' => raw_info['mobile'],
           'avatar' => raw_info['avatar'],
           'bio' => raw_info['bio'],
+          'mygeekpark_open_id' => raw_info['mygeekpark_open_id'],
         }
       end
 
