@@ -1,5 +1,3 @@
-require 'omniauth-oauth2'
-
 module OmniAuth
   module Strategies
     class WeChat < OmniAuth::Strategies::OAuth2

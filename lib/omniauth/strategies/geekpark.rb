@@ -1,5 +1,3 @@
-require 'omniauth-oauth2'
-
 module OmniAuth
   module Strategies
     class GeekPark < OmniAuth::Strategies::OAuth2
@@ -13,15 +11,15 @@ module OmniAuth
 
       info do
         {
-          'username' => raw_info['username'],
-          'realname' => raw_info['realname'],
-          'email' => raw_info['email'],
-          'company' => raw_info['company'],
-          'position' => raw_info['position'],
-          'mobile' => raw_info['mobile'],
-          'avatar' => raw_info['avatar'],
-          'bio' => raw_info['bio'],
-          'mygeekpark_open_id' => raw_info['mygeekpark_open_id'],
+          username: raw_info['username'],
+          realname: raw_info['realname'],
+          email: raw_info['email'],
+          company: raw_info['company'],
+          position: raw_info['position'],
+          mobile: raw_info['mobile'],
+          avatar: raw_info['avatar'],
+          bio: raw_info['bio'],
+          mygeekpark_open_id: raw_info['mygeekpark_open_id'],
         }
       end
 
