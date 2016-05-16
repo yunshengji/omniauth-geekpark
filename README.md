@@ -21,3 +21,10 @@ use OmniAuth::Builder do
 end
 ```
 
+### Helper
+```
+class User < ActiveRecord::Base
+  include OmniAuth::GeekPark::Helper
+end
+```
+see more at code
