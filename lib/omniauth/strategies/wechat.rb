@@ -7,6 +7,8 @@ module OmniAuth
         token_url: 'https://api.weixin.qq.com/sns/oauth2/access_token',
       }
 
+      option :provider_ignores_state, true
+
       uid { raw_info['unionid'] }
 
       info do
@@ -36,7 +38,6 @@ module OmniAuth
       end
 
       def authorize_params
-        options.authorize_params[:state] = SecureRandom.hex(24)
         params = options.authorize_params.merge({
           appid: options.client_id,
           redirect_uri: callback_url,
@@ -47,7 +48,10 @@ module OmniAuth
           @env ||= {}
           @env["rack.session"] ||= {}
         end
-        session["omniauth.state"] = params[:state]
+        unless options.provider_ignores_state
+          params[:state] = SecureRandom.hex(24)
+          session["omniauth.state"] = params[:state]
+        end
         params
       end
 
