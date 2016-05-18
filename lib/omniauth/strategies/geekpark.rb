@@ -12,10 +12,13 @@ module OmniAuth
       info do
         {
           nickname: raw_info['nickname'],
-          gender: raw_info['gender'],
           city: raw_info['city'],
+          realname: raw_info['realname'],
+          gender: raw_info['gender'],
+          birthday: raw_info['birthday'],
+          company: raw_info['company'],
+          title: raw_info['title'],
           bio: raw_info['bio'],
-          position: raw_info['position'],
           avatar_url: raw_info['avatar_url']
         }
       end
