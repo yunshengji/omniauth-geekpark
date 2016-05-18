@@ -12,7 +12,8 @@ module OmniAuth
       def refresh_token!
         return unless refresh_token.present?
 
-        res = Faraday.post "https://account.geekpark.net/oauth2/token" do |req|
+        res = conn.post do |req|
+          req.url '/oauth2/token'
           req.body = { grant_type: 'refresh_token',
                        refresh_token: refresh_token,
                        client_id: ENV['GEEKPARK_KEY'],
@@ -25,6 +26,29 @@ module OmniAuth
           return body['access_token']
         else
           nil
+        end
+      end
+
+      def personal_info
+        res = conn.get do |req|
+          req.url '/api/v1/user/extra_info'
+          req.params[:query] = %w(email mobile)
+          req.params[:access_token] = token
+        end
+
+        if res.status == 200
+          JSON.parse(res.body)
+        else
+          nil
+        end
+      end
+
+      private
+
+      def conn
+        @conn ||= Faraday.new(url: 'https://account.geekpark.net') do |faraday|
+          faraday.request  :url_encoded
+          faraday.adapter  Faraday.default_adapter
         end
       end
     end
