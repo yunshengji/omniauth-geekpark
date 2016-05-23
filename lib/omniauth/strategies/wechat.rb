@@ -3,7 +3,7 @@ module OmniAuth
     class WeChat < OmniAuth::Strategies::OAuth2
       option :client_options, {
         site: 'https://api.weixin.qq.com',
-        authorize_url: 'https://open.weixin.qq.com/connect/qrconnect',
+        authorize_url: 'https://open.weixin.qq.com/connect/oauth2/authorize',
         token_url: 'https://api.weixin.qq.com/sns/oauth2/access_token',
       }
 
@@ -42,7 +42,7 @@ module OmniAuth
           appid: options.client_id,
           redirect_uri: callback_url,
           response_type: 'code',
-          scope: request.params['scope'] || 'snsapi_login',
+          scope: 'snsapi_userinfo',
         })
         if OmniAuth.config.test_mode
           @env ||= {}
