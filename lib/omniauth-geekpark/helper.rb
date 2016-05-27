@@ -29,7 +29,7 @@ module OmniAuth
         end
       end
 
-      def personal_info
+      def extra_info
         res = conn.get do |req|
           req.url '/api/v1/user/extra_info'
           req.params[:query] = %w(email mobile)
