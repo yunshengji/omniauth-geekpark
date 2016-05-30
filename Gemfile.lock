@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omniauth-geekpark (0.2.1)
+    omniauth-geekpark (1.0.4)
       omniauth (~> 1.0)
       omniauth-oauth2 (= 1.3.1)
 
@@ -43,7 +43,7 @@ GEM
       rb-inotify (>= 0.9.7)
     lumberjack (1.0.10)
     method_source (0.8.2)
-    multi_json (1.12.0)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.3.0)
@@ -111,4 +111,4 @@ DEPENDENCIES
   webmock (~> 1.24, >= 1.24.2)
 
 BUNDLED WITH
-   1.12.3
+   1.12.4

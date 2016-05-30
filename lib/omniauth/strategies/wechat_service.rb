@@ -1,9 +1,9 @@
 module OmniAuth
   module Strategies
-    class WeChat < OmniAuth::Strategies::OAuth2
+    class WeChatService < OmniAuth::Strategies::OAuth2
       option :client_options, {
         site: 'https://api.weixin.qq.com',
-        authorize_url: 'https://open.weixin.qq.com/connect/qrconnect',
+        authorize_url: 'https://open.weixin.qq.com/connect/oauth2/authorize',
         token_url: 'https://api.weixin.qq.com/sns/oauth2/access_token',
       }
 
@@ -42,7 +42,8 @@ module OmniAuth
           appid: options.client_id,
           redirect_uri: callback_url,
           response_type: 'code',
-          scope: request.params['scope'] || 'snsapi_login',
+          state: request.params['state'],
+          scope: request.params['scope'] || 'snsapi_userinfo'
         })
         if OmniAuth.config.test_mode
           @env ||= {}
@@ -57,6 +58,18 @@ module OmniAuth
 
       def token_params
         { appid: options.client_id, secret: options.client_secret }
+      end
+
+      def callback_phase
+        if request.params['state'].match(/\Ahttps?:\/\/(.*\.)?geekpark\.net\/.*\z/)
+          env['omniauth.redirect'] = {
+            callback_url: request.params['state'],
+            code: request.params['code']
+          }
+          call_app!
+        else
+          super
+        end
       end
 
       protected
@@ -76,4 +89,4 @@ module OmniAuth
   end
 end
 
-OmniAuth.config.add_camelization('wechat', 'WeChat')
+OmniAuth.config.add_camelization('wechatservice', 'WeChatService')
