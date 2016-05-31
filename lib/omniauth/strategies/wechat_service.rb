@@ -61,11 +61,12 @@ module OmniAuth
       end
 
       def callback_phase
+        # 其它 app 需要获取微信openid 时,将 callbackurl 传入 state 参数
         if request.params['state'].match(/\Ahttps?:\/\/(.*\.)?geekpark\.net\/.*\z/)
-          env['omniauth.redirect'] = {
-            callback_url: request.params['state'],
-            code: request.params['code']
-          }
+          uri = URI(request.params['state'])
+          query = Rack::Utils.parse_nested_query(uri.query).merge(code: request.params['code'])
+          uri.query = URI.encode_www_form query
+          env['omniauth.redirect'] = uri.to_s
           call_app!
         else
           super
