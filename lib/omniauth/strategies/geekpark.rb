@@ -19,7 +19,9 @@ module OmniAuth
           company: raw_info['company'],
           title: raw_info['title'],
           bio: raw_info['bio'],
-          avatar_url: raw_info['avatar_url']
+          avatar_url: raw_info['avatar_url'],
+          email: raw_info['email'],
+          mobile: raw_info['mobile']
         }
       end
 
