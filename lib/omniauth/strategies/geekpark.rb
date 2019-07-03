@@ -2,7 +2,7 @@ module OmniAuth
   module Strategies
     class GeekPark < OmniAuth::Strategies::OAuth2
       option :client_options, {
-        site: 'http://18.188.177.146:81',
+        site: 'http://18.191.49.94:88',
         authorize_url: '/oauth2/authorize',
         token_url: '/oauth2/token'
       }
