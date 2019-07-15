@@ -46,7 +46,7 @@ module OmniAuth
       private
 
       def conn
-        @conn ||= Faraday.new(url: 'http://18.191.49.94:88') do |faraday|
+        @conn ||= Faraday.new(url: 'http://3.112.87.209:88') do |faraday|
           faraday.request  :url_encoded
           faraday.adapter  Faraday.default_adapter
         end
